@@ -1,0 +1,32 @@
+name: CICD
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  code:
+    runs-on:
+    steps:
+      - name: write the code
+        run: echo "Writing code..."
+  
+  build:
+    needs: [code]
+    runs-on:
+    steps:
+      - name: build the written code
+        run: echo "Building the code..."
+  
+  test:
+    need: [build]
+    runs-on:
+    steps:
+      - name: test the built code
+        run: echo "Testing the built code..."
+  
+  deploy:
+    needs: [build,test]
+    runs-on:
+    steps:
+      - name: deploy the final tested code
+        run: echo "Deployed successfully..."
