@@ -5,28 +5,28 @@ on:
   
 jobs:
   code:
-    runs-on:
+    runs-on: ubuntu-latest
     steps:
       - name: write the code
         run: echo "Writing code..."
   
   build:
     needs: [code]
-    runs-on:
+    runs-on: ubuntu-latest
     steps:
       - name: build the written code
         run: echo "Building the code..."
   
   test:
-    need: [build]
-    runs-on:
+    needs: [build]
+    runs-on: ubuntu-latest
     steps:
       - name: test the built code
         run: echo "Testing the built code..."
   
   deploy:
     needs: [build,test]
-    runs-on:
+    runs-on: ubuntu-latest
     steps:
       - name: deploy the final tested code
         run: echo "Deployed successfully..."
