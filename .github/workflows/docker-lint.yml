@@ -1,0 +1,19 @@
+# Scans the Dockerfile for issues & CVEs
+# Tool used - Hado Lint
+
+name: Docker Lint
+
+on:
+    workflow_call:
+
+jobs:
+    validate-dockerfile:
+        runs-on: ubunut-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+
+            - name: Validate Dockerfile
+              uses: hadolint/hadolint-action@v3.1.0
+              with:
+                dockerfile: DOckerfile
