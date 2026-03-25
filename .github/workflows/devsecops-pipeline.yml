@@ -5,7 +5,7 @@ on:
         branches: [main]
 
 jobs:
-    # CI (Code  Integration with Secrutiy Scanning)
+    # CI (Code Integration with Secrutiy Scanning)
     Code-Quality:
         uses: ./.github/workflows/code-quality.yml
     
@@ -25,7 +25,14 @@ jobs:
         uses: ./.github/workflows/docker-build-push.yml
         secrets: inherit
 
+    # Image Scan
     Trivy:
         needs: [Build]
         uses: ./.github/workflows/image-scan.yml
+        secrets: inherit
+
+    # CD (Code Deployment ) - Deploy to Production
+    Deploy:
+        needs: [Trivy]
+        uses: ./.github/workflows/deploy-to-server.yml
         secrets: inherit
