@@ -20,6 +20,9 @@ jobs:
             - name: Upgrade pip
               run: python -m pip install --upgrade pip
 
+            - name: Install dependencies
+              run: pip install -r requirements.txt  
+
             - name: Install Pip Audit
               run: pip install pip-audit
 
