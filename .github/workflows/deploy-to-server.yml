@@ -7,7 +7,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name:
+      - name: SSH to Production Server
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_SSH_HOST }}
