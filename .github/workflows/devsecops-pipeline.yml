@@ -3,6 +3,7 @@ name: DevSecOps End to End Pipeline
 on:
     push:
         branches: [main]
+    workflow_dispatch:    
 
 jobs:
     # CI (Code Integration with Secrutiy Scanning)
