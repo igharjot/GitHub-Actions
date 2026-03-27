@@ -1,3 +1,5 @@
 flake8
 flask
 bandit
+gunicorn
+pytest
