@@ -55,9 +55,16 @@ jobs:
             echo DOCKERHUB_USER=${{ vars.DOCKERHUB_USER }} > .env
             echo DOCKER_TAG=${{ github.sha }} >> .env
 
-            cat .env
-
             echo ${{ secrets.DOCKERHUB_TOKEN }} | sudo docker login --username ${{ vars.DOCKERHUB_USER }} --password-stdin
 
+            # remove old container completely
+            sudo docker-compose --env-file .env down --remove-orphans
+
+            # remove old images (optional but safer)
+            sudo docker image prune -f
+
+            # pull latest image
             sudo docker-compose --env-file .env pull
-            sudo docker-compose --env-file .env up -d --force-recreate
+
+            # create new container
+            sudo docker-compose --env-file .env up -d
