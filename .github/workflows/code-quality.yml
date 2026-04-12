@@ -1,4 +1,4 @@
-# Linting and SAST Scan
+# Linting and SAST(Static Application Security Tested) Scan
 # Tools used :
 # lint -  flake8
 # SAST - Bandit
